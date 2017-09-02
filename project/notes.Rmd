@@ -1,0 +1,19 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# R in a Nutshell
+
+Author: 
+
+## Preface
+
+[GNU foundation's FAQ on GPL](http://www.gnu.org/licenses/gplfaq) - Handy when it comes to rights to extensions written for R (when you write code that is only interpreted by R, then no rigth bounds apply)
+
+## Part I. R Basics
+
+- installing
+- packages (installing, usage)
+- quick tutorial
+- overview of R features
+
