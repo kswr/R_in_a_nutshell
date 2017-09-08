@@ -1,0 +1,142 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+# R in a Nutshell
+
+Author: 
+
+## Preface
+
+[GNU foundation's FAQ on GPL](http://www.gnu.org/licenses/gplfaq) - Handy when it comes to rights to extensions written for R (when you write code that is only interpreted by R, then no rigth bounds apply)
+
+## Part I. R Basics
+
+- installing
+- packages (installing, usage)
+- quick tutorial
+- overview of R features
+
+### Chapter 1. Getting and Installing R
+
+### Chapter 2. The R User Interface
+
+#### Command line editing
+
+Lets user type commands into R interactive shell and get computed results immediately
+
+#### Batch mode 
+
+Provides way to run large set of commands in sequence and save the results to a file using `CMD` or `RScript` command
+
+Example:
+```
+$ R CMD BATCH generate_graphs.R
+```
+or
+```
+$ RScript generate_graphs.R
+```
+##### Executable batch file
+
+Contents (mind the shebang)
+```
+#! /usr/bin/env RScript
+
+print("Hello world!");
+```
+Commands
+```
+# making executable
+$ chmod +x hello_world.R
+
+# executing
+$ ./hello_world.R
+```
+
+##### Executing batch file from inside R
+
+`source` command
+
+#### R and other technologies (some libs are obsolete)
+
+- MS Excel (many packages)
+- rApache (R analysis in web app)
+- Rserve (binary R server for multiple users)
+- ESS - Emacs Speaks Statistics (package for using R inside Emacs)
+
+### Chapter 3. A Short R Tutorial
+
+In R `"Hello world."` is a character vector of length 1.
+
+`c("Hello","World")` is a character vector of length 2.
+
+To test it type: 
+
+```
+> length(c('hello','hello'))
+```
+
+Therefore there is no string concept in R, each character vector can store more than one character.
+
+#### Functions
+
+Functions take arguments and processes them, they can take form of `f(...)` or operator (e.g. addition `+`, exponentiation `^` or equality `==` operator)
+
+Functions are assigned like variables
+```
+f <- function(x,y) {c(x+1, y+1)}
+```
+(to see code for existing function, type it's name without `()`)
+
+#### Data Structures
+
+Array - one data type vector that's associated with a dimension attribute
+
+  - can have more than 2 dimensions
+  
+```
+> a <- array(c(1:12), dim=c(3,4))
+```
+Matrix - two dimensional array
+
+List  
+
+  - vector containing multiple objects of possibly varius data types
+  - each component in a list can be named
+  - objects can be referred by location or name
+  - can contain other lists
+
+```{r}
+# a list containing two strings
+e <- list(thing='hat', size='8.25')
+e
+e$thing
+e[1]
+e[[1]]
+
+g <- list(element_1 = 'element one',other_list = e)
+g
+```
+
+Data frame
+
+  - list
+  - contains multiple vectors (optionally of various types)
+  - each vector has to be the same length
+
+```{r}
+# creating df
+teams <- c('PHI','NYM','FLA','ATL','WSN')
+w <- c(92,89,94,72,59)
+l <- c(70,73,77,90,102)
+nleast <- data.frame(teams,w,l)
+nleast
+
+# get number of loses by Florida Marlins
+nleast$l[nleast$teams=='FLA']
+```
+
+#### Objects and Classes
+
+Functions available only for specific classes are called methods (duh)
